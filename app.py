@@ -10,7 +10,9 @@ try:
     bundle=load_bundle(); ready=True
 except Exception as e:
     ready=False
-    st.error(f"Model file not found. Place pipeline_model_site.joblib next to app.py.  ({e})")
+    import traceback
+    st.error("The model could not be loaded. Details below:")
+    st.code(traceback.format_exc())
 
 st.markdown('<div class="lede">A decision-support tool that estimates pipeline condition from '
             'operating parameters already on record, so inspection effort goes where it matters '
