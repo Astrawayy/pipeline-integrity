@@ -5,8 +5,11 @@ import pandas as pd
 import joblib
 import streamlit as st
 
-BUNDLE_PATH = "pipeline_model_site.joblib"
-LOGO_CANDIDATES = ["logo_dago.png", "logo.png", "dago_logo.png"]
+# Resolve paths from THIS file's folder, so it works regardless of the current
+# working directory (Streamlit Cloud does not always run from the repo root).
+_HERE = os.path.dirname(os.path.abspath(__file__))
+BUNDLE_PATH = os.path.join(_HERE, "pipeline_model_site.joblib")
+LOGO_CANDIDATES = [os.path.join(_HERE, n) for n in ("logo_dago.png", "logo.png", "dago_logo.png")]
 N_KEY_FIELDS = 8
 
 # ── Dark palette ─────────────────────────────────────────────────────────────
